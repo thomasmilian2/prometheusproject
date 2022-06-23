@@ -1,0 +1,23 @@
+ ---
+- name: Install packages
+  hosts: all
+  tasks:
+    - name: "1. Installs the php and mariadb packages"
+      yum:
+        name:
+          - php
+          - mariadb
+        state: present
+
+    - name: "2. Installs the Development Tools package group"
+      yum:
+        name: "@Development Tools"
+        state: present
+      when: inventory_hostname in groups['dev']
+
+    - name: "3. Updates all packages to the latest version"
+      yum:
+        name: '*'
+          exclude: kernel
+          state: latest
+      when: inventory_hostname in groups['dev'] 
