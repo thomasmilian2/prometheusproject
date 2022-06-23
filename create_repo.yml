@@ -1,0 +1,19 @@
+---
+- name: creazione repository locale
+  hosts: all
+  tasks:
+    - name: creazione repository BaseOS
+      yum_repository:
+        name: BaseOS
+        description: BaseOS repo
+        baseurl: https://repo.lab.example.com/BaseOS
+        gpgcheck: no 
+        enabled: yes
+    - name: creazione repository AppStream
+      yum_repository:
+        name: AppStream
+        description: AppStream repo
+        baseurl: https://repo.lab.example.com/AppStream
+        gpgcheck: no
+        enabled: yes
+
