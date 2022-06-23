@@ -6,14 +6,14 @@
       yum_repository:
         name: BaseOS
         description: BaseOS repo
-        baseurl: https://repo.lab.example.com/BaseOS
+        baseurl: http://repo.lab.example.com/BaseOS
         gpgcheck: no 
         enabled: yes
     - name: creazione repository AppStream
       yum_repository:
         name: AppStream
         description: AppStream repo
-        baseurl: https://repo.lab.example.com/AppStream
+        baseurl: http://repo.lab.example.com/AppStream
         gpgcheck: no
         enabled: yes
 
