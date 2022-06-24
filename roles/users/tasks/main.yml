@@ -11,8 +11,7 @@
   authorized_key:
     user: automation
     state: present
-    key: https://github.com/thomasmilian2/prometheusproject/blob/main/roles/users/files/id_rsa.pub
-    validate_certs: False
+    key: "{{ lookup('file', 'files/id_rsa.pub') }}"
 - name: Validate the sudoers file before saving
   lineinfile:
     path: /etc/sudoers
