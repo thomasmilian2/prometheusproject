@@ -1,0 +1,13 @@
+---
+# tasks file for apache
+- name: Start service httpd, if not started
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+- name: open port
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes

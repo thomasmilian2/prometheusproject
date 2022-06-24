@@ -1,0 +1,5 @@
+---
+- name: creazione utenza automation
+  hosts: all
+  roles:
+    - roles/users  

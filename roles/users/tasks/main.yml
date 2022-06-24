@@ -1,0 +1,21 @@
+---
+# tasks file for users
+- name: Add the user automation
+  user:
+    name: automation
+    comment: user test auto
+    uid: 2000
+    group: wheel
+    append: yes
+- name: Set authorized key taken from file
+  authorized_key:
+    user: automation
+    state: present
+    key: "{{ lookup('file', 'files/id_rsa.pub') }}"
+- name: Validate the sudoers file before saving
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: 'wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %s
