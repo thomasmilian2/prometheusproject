@@ -1,0 +1,9 @@
+---
+- name: disabilitare firewall
+  hosts: all
+  tasks:
+    - name: Stop service 
+      service:
+        name: firewalld
+        state: stopped
+        enabled: no        
